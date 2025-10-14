@@ -1,18 +1,35 @@
 class Book:
-    def __init__(self,title,author,year):
+    therory = "Vijay"
+    def __init__(self, title, author, year):
         self.title = title
         self.author = author
         self.year = year
-    
-    def info(self):
-        print(f"The title of book is {self.title} and it is written by {self.author} in {self.year}")
-        
-    def sp_info(self):
-        return self.year>2003
-    
-    
-b1 = Book("Sham chi aai","Gaurav Jadhav",2004)
 
-b1.info()
-print("its is classic : ",b1.sp_info())
-                
+    def display_details(self):
+        print(f"Title: {self.title}")
+        print(f"Author: {self.author}")
+        print(f"Year Published: {self.year}")
+        
+    @classmethod
+    def supet_Star(cls):
+        print(cls.therory)
+        
+    def supet_Star(notebook):
+        print(notebook.a)
+
+book1 = Book("Shyamchi Aait", "Sane Guruji", 1988)
+book2 = Book("Yayati", "V. S. Khandeka", 1959)
+book3 = Book("Mrutyunjay", "Shivaji Sawant", 1967)
+
+book1.display_details()
+print()
+book2.display_details()
+print()
+book3.display_details()
+book3.supet_Star()
+
+
+
+class notbook:
+    a = 10
+    b = 20
