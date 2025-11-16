@@ -27,7 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class RoleAssignSerializer(serializers.Serializer):
-    role = serializers.ChoiceField(choices=[('user','User'), ('employee','Employee'), ('admin','Admin')])
+    role = serializers.ChoiceField(choices=[('user','User'), ('employee','Employee'), ('admin','Admin'),  ('maneger', 'Maneger'),])
 
 
 class BlogSerializer(serializers.ModelSerializer):
