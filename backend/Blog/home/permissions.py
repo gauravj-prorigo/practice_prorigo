@@ -34,7 +34,7 @@ class BlogPermission(BasePermission):
 
         # Create: only admin or employee (manager cannot create)
         if request.method == 'POST':
-            return user.is_superuser or getattr(user, 'role', None) in ('admin', 'employee')
+            return user.is_superuser or getattr(user, 'role', None) in ('admin', 'employee','maneger')
 
         # For PUT/PATCH/DELETE we let object-level permission decide
         return True
@@ -56,14 +56,20 @@ class BlogPermission(BasePermission):
 
         # Update: manager can edit any; employee can edit only own; others cannot
         if request.method in ('PUT', 'PATCH'):
-            if role == 'manager':
+            if role == 'maneger':
                 return True
             if role == 'employee':
                 return getattr(obj, 'author', None) == user
             return False
 
         # Delete: only admin/superuser allowed (we already returned True above for them)
-        if request.method == 'DELETE':
-            return False
-
+        if request.method == 'DELETE':   
+            
+            if role == 'manager':
+                return getattr(obj, 'author', None) == user
+             
+            if role == 'employee':
+             return getattr(obj, 'author', None) == user
         return False
+
+      

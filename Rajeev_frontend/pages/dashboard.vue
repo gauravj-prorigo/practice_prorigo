@@ -2,7 +2,7 @@
   <div class="dashboard-page">
     <div class="dashboard-content">
       <Manegerdashboard v-if="auth.hasRole('maneger')"/>
-      <AdminDashboard v-if="auth.hasRole('admin')" />
+      <AdminDashboard v-else-if="auth.hasRole('admin')" />
       <EmployeeDashboard v-else-if="auth.hasRole('employee')" />
       <UserDashboard v-else-if="auth.hasRole('user')" />
       <div v-else class="unknown-role">
